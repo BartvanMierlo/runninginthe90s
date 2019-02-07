@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "outFile": "./dist/bundle.js",
+        "sourceMap": true,
+        "allowJs": true
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
