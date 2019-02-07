@@ -60,6 +60,11 @@ for (var i = 0; i < 50; i++) {
 	);
 }
 
+// Car
+var car = new Car(100, 100);
+car.render();
+
+
 cube2.position.x = 10;
 
 scene.add(cube)
@@ -115,7 +120,7 @@ var render = function () {
 	requestAnimationFrame(render);
 	controls.update();
 	renderer.render(scene, camera);
-
+	car.update();
 };
 
 
