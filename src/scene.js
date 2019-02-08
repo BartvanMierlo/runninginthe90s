@@ -4,6 +4,7 @@ var scene = new THREE.Scene();
 var imgDir = "assets/img/";
 
 // Create camera
+
 var camera = new THREE.PerspectiveCamera(
 	75, // fov — Camera frustum vertical field of view.
 	window.innerWidth / window.innerHeight, // aspect — Camera frustum aspect ratio.
@@ -33,11 +34,17 @@ cube2.position.x = 10;
 
 scene.add(cube)
 scene.add(cube2);
+//add tree
 var tree = new Tree(20,-10,20);
 tree.createTrunk();
 tree.createCanopy();
 tree.createApples();
 tree.render();
+
+//add house 1
+var house = new HouseAf(-10,-10,-10);
+house.createBase();
+house.render();
 
 camera.position.x = 2;
 camera.position.y = 1;

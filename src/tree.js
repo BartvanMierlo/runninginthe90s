@@ -25,19 +25,21 @@ class Tree {
             var randZ = THREE.Math.randInt(-4, 4);
             var leaf = new THREE.Mesh(leafGeometry, treeLeafMaterial);
             leaf.position.x += randX + this.x;
-            leaf.position.y += randY + this.y+15;
+            leaf.position.y += randY + this.y+18;
             leaf.position.z += randZ + this.z;
             this.meshArray.push(leaf);
         }
     }
 
     createApples(){
-        var appleGeometry = new THREE.SphereGeometry(1, 15, 15);
-        var appleMaterial = new THREE.MeshPhongMaterial({ color: 0xff1919, shininess: 10 });
+        var appleGeometry = new THREE.TorusGeometry(0.7,0.7,8,30);
+        var appleMaterial = new THREE.MeshPhongMaterial({ color: 0xff1919, shininess: 60 });
         for (var i = 0; i < 50; i++) {
-        	var apple = new THREE.Mesh(appleGeometry, appleMaterial);
+            var apple = new THREE.Mesh(appleGeometry, appleMaterial);
+            apple.rotation.x = Math.PI/2;
+            apple.scale.set(1,1,1.7);
         	apple.position.x += THREE.Math.randInt(-7, 7) + this.x;
-        	apple.position.y += THREE.Math.randInt(-7, 7) + this.y + 13;
+        	apple.position.y += THREE.Math.randInt(-7, 7) + this.y + 16;
         	apple.position.z += THREE.Math.randInt(-7, 7) + this.z;
         	this.meshArray.push(apple);
         }
