@@ -19,8 +19,9 @@ document.body.appendChild(renderer.domElement);
 //add treeline
 for(i=0;i<10;i++){
 var tree = new Tree(30 ,-10,20+ i*20);
-}
 tree.render();
+}
+
 
 var car = new Car(100, 100);
 car.render();
