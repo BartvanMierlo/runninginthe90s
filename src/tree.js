@@ -46,6 +46,9 @@ class Tree {
     }
 
     render(){
+        this.createTrunk();
+        this.createCanopy();
+        this.createApples();
         for (var i = 0; i < this.meshArray.length; i++) {
             scene.add(this.meshArray[i]);
         }
