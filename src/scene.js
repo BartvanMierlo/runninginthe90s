@@ -16,42 +16,14 @@ var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-<<<<<<< HEAD
 //add treeline
 for(i=0;i<10;i++){
 var tree = new Tree(30 ,-10,20+ i*20);
-=======
-//Create meshes
+}
+tree.render();
 
-
-var geometry = new THREE.BoxGeometry(1, 1, 1);
-var geometry2 = new THREE.BoxGeometry(1, 1, 1);
-var material = new THREE.MeshPhongMaterial({ color: 0xff69b4, shininess: 10 });
-
-
-var cube = new THREE.Mesh(geometry, material);
-var cube2 = new THREE.Mesh(geometry2, material);
-
-
-
-
-// Car
 var car = new Car(100, 100);
 car.render();
-
-
-cube2.position.x = 10;
-
-scene.add(cube)
-scene.add(cube2);
-//add tree
-var tree = new Tree(20,-10,20);
-tree.createTrunk();
-tree.createCanopy();
-tree.createApples();
->>>>>>> 5bc1c34f70507bc7bbdf1be1e9154acaf90cafaa
-tree.render();
-}
 
 //add house 1
 var house = new HouseAf(-10,-10,-10);
