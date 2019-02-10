@@ -4,6 +4,7 @@ var scene = new THREE.Scene();
 var imgDir = "assets/img/";
 
 // Create camera
+
 var camera = new THREE.PerspectiveCamera(
 	75, // fov — Camera frustum vertical field of view.
 	window.innerWidth / window.innerHeight, // aspect — Camera frustum aspect ratio.
@@ -15,54 +16,18 @@ var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-//Create meshes
-var treeMeshArray = [];
-var leafGeometry = new THREE.SphereGeometry(8, 32, 32);
-var appleGeometry = new THREE.SphereGeometry(1, 15, 15);
-var cylinderGeometry1 = new THREE.CylinderGeometry(2, 2, 50, 32);
-var material = new THREE.MeshPhongMaterial({ color: 0xff69b4, shininess: 10 });
-var treeBaseMaterial = new THREE.MeshPhongMaterial({ color: 0x53290b, shininess: 10 });
-var treeLeafMaterial = new THREE.MeshPhongMaterial({ color: 0x004c00, shininess: 10 });
-var appleMaterial = new THREE.MeshPhongMaterial({ color: 0xff1919, shininess: 10 });
-var cylinder = new THREE.Mesh(cylinderGeometry1, treeBaseMaterial);
-cylinder.position.x = 30;
-cylinder.position.y = -10;
-cylinder.position.z = 43;
 
-treeMeshArray.push(cylinder);
-for (var i = 0; i < 10; i++) {
-	var randX = THREE.Math.randInt(-4, 4);
-	var randY = THREE.Math.randInt(-4, 4);
-	var randZ = THREE.Math.randInt(-4, 4);
+//add tree
+var tree = new Tree(20,-10,20);
+tree.createTrunk();
+tree.createCanopy();
+tree.createApples();
+tree.render();
 
-
-	var leaf = new THREE.Mesh(leafGeometry, treeLeafMaterial);
-	leaf.position.x += randX + 30;
-	leaf.position.y += randY + 15;
-	leaf.position.z += randZ + 43;
-	treeMeshArray.push(
-		leaf
-	);
-
-}
-for (var i = 0; i < 50; i++) {
-	var apple = new THREE.Mesh(appleGeometry, appleMaterial);
-	apple.position.x += THREE.Math.randInt(-7, 7) + 30;
-	apple.position.y += THREE.Math.randInt(-7, 7) + 15 - 2;
-	apple.position.z += THREE.Math.randInt(-7, 7) + 43;
-	treeMeshArray.push(
-		apple
-	);
-}
-
-
-var house = new PrHouse(10, 0, 10);
+//add house 1
+var house = new HouseAf(-10,-10,-10);
+house.createBase();
 house.render();
-
-scene.add(cylinder);
-for (var i = 0; i < treeMeshArray.length; i++) {
-	scene.add(treeMeshArray[i]);
-}
 
 camera.position.x = 2;
 camera.position.y = 1;
