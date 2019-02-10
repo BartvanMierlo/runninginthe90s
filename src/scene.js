@@ -18,20 +18,27 @@ document.body.appendChild(renderer.domElement);
 
 
 //add tree
-var tree = new Tree(20,-10,20);
+var tree = new Tree(20, -10, 20);
 tree.createTrunk();
 tree.createCanopy();
 tree.createApples();
 tree.render();
 
+// Add prHouse
+var prHouse = new PrHouse(-10, 0, 0);
+prHouse.render();
+
 //add house 1
-var house = new HouseAf(-10,-10,-10);
-house.createBase();
-house.render();
+// var house = new HuisAf(-10,-10,-10);
+// house.createBase();
+// house.render();
+
+
 
 camera.position.x = 2;
 camera.position.y = 1;
 camera.position.z = 5;
+
 renderer.render(scene, camera);
 
 
@@ -77,8 +84,9 @@ var counter = 2100;
 var render = function () {
 	requestAnimationFrame(render);
 	controls.update();
-	renderer.render(scene, camera);
+	prHouse.mesh.rotateY(0.005);
 
+	renderer.render(scene, camera);
 };
 
 
