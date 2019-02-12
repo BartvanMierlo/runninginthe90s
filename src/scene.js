@@ -84,8 +84,7 @@ var counter = 2100;
 var render = function () {
 	requestAnimationFrame(render);
 	controls.update();
-	prHouse.mesh.rotateY(0.005);
-
+	
 	renderer.render(scene, camera);
 };
 
