@@ -10,27 +10,23 @@ class Van {
     render() {
         var loader = new THREE.ColladaLoader();
         loader.load('assets/models/van/model.dae', function (collada) {
-            
-            scene.add(collada.scene);
-            vanMesh = collada.scene;
-            vanMesh.scale.set(1,1,1);
+            var obj = new THREE.Object3D();
+            scene.add(obj);
+            obj.add(collada.scene);
+            obj.scale.set(10,10,10);
+            vanMesh = obj; 
         });
     }
 
     calcVelocity() {
         let angle = vanMesh.rotation.z + Math.PI;
-        vanMesh.position.x = Math.sin(angle) * this.speed;
-        vanMesh.position.z = Math.cos(angle) * this.speed;
+        vanMesh.position.z += this.speed/10;
     }
 
     update() {
         if (vanMesh) {
             this.calcVelocity();
-            cube.position.x = vanMesh.position.x;
-            cube.position.z = vanMesh.position.z;
-
-            // carMesh.position.z = this.angle;
-            vanMesh.rotateZ(-this.turnSpeed * 0.5);
+            vanMesh.rotate(-this.turnSpeed * 0.5);
         }
     }
 }

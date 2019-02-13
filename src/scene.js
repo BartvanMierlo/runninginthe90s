@@ -90,6 +90,7 @@ var render = function () {
 	controls.update();
 
 	car.update();
+	van.update();
 	renderer.render(scene, camera);
 };
 render();
