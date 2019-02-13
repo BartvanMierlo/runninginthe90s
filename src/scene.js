@@ -16,6 +16,10 @@ var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+// Add prHouse
+var prHouse = new PrHouse(-10, 0, 0, 25);
+prHouse.render();
+
 //add treeline
 for(i=0;i<10;i++){
 var tree = new Tree(30 ,-10,20+ i*20);
@@ -33,17 +37,21 @@ house.render();
 camera.position.x = 2;
 camera.position.y = 1;
 camera.position.z = 5;
+
 renderer.render(scene, camera);
 
 
 //Skybox
 //Load skybox images
-var directions = [imgDir + "posx.jpg", imgDir + "negx.jpg", imgDir + "posy.jpg", imgDir + "negy.jpg", imgDir + "posz.jpg", imgDir + "negz.jpg"];
+var directions = [imgDir + "posx.tga", imgDir + "negx.tga", imgDir + "posy.tga", imgDir + "negy.tga", imgDir + "posz.tga", imgDir + "negz.tga"];
 var materialArray = [];
+var tLoader = new THREE.TGALoader();
 for (var i = 0; i < 6; i++) {
+	var texture = tLoader.load(directions[i]);
+
 	materialArray.push(
 		new THREE.MeshBasicMaterial({
-			map: THREE.ImageUtils.loadTexture(directions[i]),
+			map: texture,
 			side: THREE.BackSide
 		})
 	);
@@ -77,8 +85,9 @@ var counter = 2100;
 var render = function () {
 	requestAnimationFrame(render);
 	controls.update();
-	renderer.render(scene, camera);
+
 	car.update();
+	renderer.render(scene, camera);
 };
 render();
 
