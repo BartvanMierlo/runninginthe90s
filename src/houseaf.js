@@ -3,129 +3,104 @@ class HouseAf {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.meshArray = [];
-        this.houseScale = 10;
+        this.size = 10;
+        this.mesh = new THREE.Group();
     }
 
     createLeftWall() {
-        var houseGeometry = new THREE.BoxGeometry(this.houseScale * 3, this.houseScale * 5, this.houseScale / 10)
-        var houseWallGeometry2 = new THREE.BoxGeometry(this.houseScale, this.houseScale * 2.5, this.houseScale / 10)
-        var texture = new THREE.TextureLoader().load("assets/img/brick1.jpg");
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set(4, 4);
+        var houseGeometry = new THREE.BoxGeometry(this.size * 3, this.size * 5, this.size / 10)
+        var houseWallGeometry2 = new THREE.BoxGeometry(this.size, this.size * 2.5, this.size / 10)
+        var texture = new THREE.TextureLoader().load(imgDir + "houseaf/brick1.jpg", function (texture) {
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.x = 2.5;
+            texture.repeat.y = 2.5;
+        });
 
-        //triangle 
+
+
         var houseMaterial = new THREE.MeshPhongMaterial({ map: texture, shininess: 10 });
-        var triangleBit = new THREE.Shape();
-        triangleBit.moveTo(this.x - (this.houseScale / 2), this.y, this.z);
-        triangleBit.lineTo(this.x + (this.houseScale * 3), this.y + (this.houseScale * 2.7), this.z);
-        triangleBit.lineTo(this.x + (this.houseScale * 6.5), this.y, this.z);
-        triangleBit.lineTo(this.x - (this.houseScale / 2), this.y, this.z);
-
-        var geometry = new THREE.ShapeGeometry(triangleBit);
-        var mesh = new THREE.Mesh(geometry, houseMaterial);
-        mesh.rotation.y = -Math.PI / 2;
-        mesh.position.y = this.y + (this.houseScale * 3.5);
-        mesh.position.x = this.x - (this.houseScale * 1.5);
-        mesh.position.z = this.z - (this.houseScale * 5.5);
-        this.meshArray.push(mesh);
 
         var wall = new THREE.Mesh(houseGeometry, houseMaterial);
         var wall2 = new THREE.Mesh(houseGeometry, houseMaterial);
         var wall3 = new THREE.Mesh(houseWallGeometry2, houseMaterial);
         var wall4 = new THREE.Mesh(houseWallGeometry2, houseMaterial);
         wall.rotation.y = Math.PI / 2;
-        wall.position.x = this.x - (this.houseScale * 1.5);
+        wall.position.x = this.x - (this.size * 1.5);
         wall.position.y = this.y;
-        wall.position.z = this.z - (this.houseScale * 1.5);
+        wall.position.z = this.z - (this.size * 1.5);
 
         wall2.rotation.y = Math.PI / 2;
-        wall2.position.x = this.x - (this.houseScale * 1.5);
+        wall2.position.x = this.x - (this.size * 1.5);
         wall2.position.y = this.y;
-        wall2.position.z = this.z - (this.houseScale * 5.5);
+        wall2.position.z = this.z - (this.size * 5.5);
 
         wall3.rotation.y = Math.PI / 2;
-        wall3.position.x = this.x - (this.houseScale * 1.5);
-        wall3.position.y = this.y + this.houseScale + (this.houseScale * 0.25);
-        wall3.position.z = this.z - (this.houseScale * 3.5);
+        wall3.position.x = this.x - (this.size * 1.5);
+        wall3.position.y = this.y + (this.size * 1.25);
+        wall3.position.z = this.z - (this.size * 3.5);
 
         wall4.rotation.y = Math.PI / 2;
-        wall4.position.x = this.x - (this.houseScale * 1.5);
-        wall4.position.y = this.y - (this.houseScale + this.houseScale);
-        wall4.position.z = this.z - (this.houseScale * 3.5);
+        wall4.position.x = this.x - (this.size * 1.5);
+        wall4.position.y = this.y - (this.size * 2);
+        wall4.position.z = this.z - (this.size * 3.5);
         wall4.scale.set(1, 0.4, 1);
 
-        this.meshArray.push(wall);
-        this.meshArray.push(wall2);
-        this.meshArray.push(wall3);
-        this.meshArray.push(wall4);
+        this.mesh.add(wall);
+        this.mesh.add(wall2);
+        this.mesh.add(wall3);
+        this.mesh.add(wall4);
     }
 
     createRightWall() {
-        var houseGeometry = new THREE.BoxGeometry(this.houseScale * 3, this.houseScale * 5, this.houseScale / 10)
-        var houseWallGeometry2 = new THREE.BoxGeometry(this.houseScale, this.houseScale * 2.5, this.houseScale / 10)
-        var texture = new THREE.TextureLoader().load("assets/img/brick1.jpg");
+        var houseGeometry = new THREE.BoxGeometry(this.size * 3, this.size * 5, this.size / 10)
+        var houseWallGeometry2 = new THREE.BoxGeometry(this.size, this.size * 2.5, this.size / 10)
+        var texture = new THREE.TextureLoader().load(imgDir + "houseaf/brick1.jpg", function (texture) {
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.x = 2.5;
+            texture.repeat.y = 2.5;
+        });
 
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set(4, 4);
         var houseMaterial = new THREE.MeshPhongMaterial({ map: texture, shininess: 10 });
-
-        var triangleBit = new THREE.Shape();
-        triangleBit.moveTo(this.x - (this.houseScale / 2), this.y, this.z);
-        triangleBit.lineTo(this.x + (this.houseScale * 3), this.y + (this.houseScale * 2.7), this.z);
-        triangleBit.lineTo(this.x + (this.houseScale * 6.5), this.y, this.z);
-        triangleBit.lineTo(this.x - (this.houseScale / 2), this.y, this.z);
-
-        var geometry = new THREE.ShapeGeometry(triangleBit);
-        var mesh = new THREE.Mesh(geometry, houseMaterial);
-        mesh.rotation.y = Math.PI / 2;
-        mesh.position.y = this.y + (this.houseScale * 3.5);
-        mesh.position.x = this.x + (this.houseScale * 5.5);
-        mesh.position.z = this.z - (this.houseScale * 1.5);
-        this.meshArray.push(mesh);
-
 
         var wall = new THREE.Mesh(houseGeometry, houseMaterial);
         var wall2 = new THREE.Mesh(houseGeometry, houseMaterial);
         var wall3 = new THREE.Mesh(houseWallGeometry2, houseMaterial);
         var wall4 = new THREE.Mesh(houseWallGeometry2, houseMaterial);
         wall.rotation.y = Math.PI / 2;
-        wall.position.x = this.x + (this.houseScale * 5.5);
+        wall.position.x = this.x + (this.size * 5.5);
         wall.position.y = this.y;
-        wall.position.z = this.z - (this.houseScale * 1.5);
+        wall.position.z = this.z - (this.size * 1.5);
 
         wall2.rotation.y = Math.PI / 2;
-        wall2.position.x = this.x + (this.houseScale * 5.5);
+        wall2.position.x = this.x + (this.size * 5.5);
         wall2.position.y = this.y;
-        wall2.position.z = this.z - (this.houseScale * 5.5);
+        wall2.position.z = this.z - (this.size * 5.5);
 
         wall3.rotation.y = Math.PI / 2;
-        wall3.position.x = this.x + (this.houseScale * 5.5);
-        wall3.position.y = this.y + this.houseScale + (this.houseScale * 0.25);
-        wall3.position.z = this.z - (this.houseScale * 3.5);
+        wall3.position.x = this.x + (this.size * 5.5);
+        wall3.position.y = this.y + (this.size * 1.25);
+        wall3.position.z = this.z - (this.size * 3.5);
 
         wall4.rotation.y = Math.PI / 2;
-        wall4.position.x = this.x + (this.houseScale * 5.5);
-        wall4.position.y = this.y - (this.houseScale + this.houseScale);
-        wall4.position.z = this.z - (this.houseScale * 3.5);
+        wall4.position.x = this.x + (this.size * 5.5);
+        wall4.position.y = this.y - (this.size * 2);
+        wall4.position.z = this.z - (this.size * 3.5);
         wall4.scale.set(1, 0.4, 1);
 
-        this.meshArray.push(wall);
-        this.meshArray.push(wall2);
-        this.meshArray.push(wall3);
-        this.meshArray.push(wall4);
+        this.mesh.add(wall);
+        this.mesh.add(wall2);
+        this.mesh.add(wall3);
+        this.mesh.add(wall4);
     }
 
     createFront() {
-        var houseGeometry = new THREE.BoxGeometry(this.houseScale * 3, this.houseScale * 5, this.houseScale / 10)
-        var houseWallGeometry2 = new THREE.BoxGeometry(this.houseScale, this.houseScale * 3, this.houseScale / 10)
-        var texture = new THREE.TextureLoader().load("assets/img/brick1.jpg");
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set(4, 4);
-
+        var houseGeometry = new THREE.BoxGeometry(this.size * 3, this.size * 5, this.size / 10)
+        var houseWallGeometry2 = new THREE.BoxGeometry(this.size, this.size * 3, this.size / 10)
+        var texture = new THREE.TextureLoader().load(imgDir + "houseaf/brick1.jpg", function (texture) {
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.x = 2.5;
+            texture.repeat.y = 2.5;
+        });
         var houseMaterial = new THREE.MeshPhongMaterial({ map: texture, shininess: 10 });
         var wall = new THREE.Mesh(houseGeometry, houseMaterial);
         var wall2 = new THREE.Mesh(houseGeometry, houseMaterial);
@@ -133,36 +108,42 @@ class HouseAf {
         wall.position.x = this.x;
         wall.position.y = this.y;
         wall.position.z = this.z;
-        wall2.position.x = this.x + (this.houseScale * 3) + this.houseScale;
+        wall2.position.x = this.x + (this.size * 4);
         wall2.position.y = this.y;
         wall2.position.z = this.z;
-        wall3.position.x = this.x + (this.houseScale * 2);
-        wall3.position.y = this.y + (this.houseScale);
+        wall3.position.x = this.x + (this.size * 2);
+        wall3.position.y = this.y + (this.size);
         wall3.position.z = this.z;
 
-        this.meshArray.push(wall);
-        this.meshArray.push(wall2);
-        this.meshArray.push(wall3);
+        this.mesh.add(wall);
+        this.mesh.add(wall2);
+        this.mesh.add(wall3);
     }
 
     createBack() {
-        var houseGeometry = new THREE.BoxGeometry(this.houseScale * 7, this.houseScale * 5, this.houseScale / 10);
-        var texture = new THREE.TextureLoader().load("assets/img/brick1.jpg");
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set(4, 4);
+        var houseGeometry = new THREE.BoxGeometry(this.size * 7, this.size * 5, this.size / 10);
+        var texture = new THREE.TextureLoader().load(imgDir + "houseaf/brick1.jpg", function (texture) {
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.x = 2.5;
+            texture.repeat.y = 2.5;
+        });
+
 
         var houseMaterial = new THREE.MeshPhongMaterial({ map: texture, shininess: 10 });
         var wall = new THREE.Mesh(houseGeometry, houseMaterial);
-        wall.position.x = this.x + this.houseScale * 2;
+        wall.position.x = this.x + (this.size * 2);
         wall.position.y = this.y;
-        wall.position.z = this.z - this.houseScale * 7;
+        wall.position.z = this.z - (this.size * 7);
 
-        this.meshArray.push(wall);
+        this.mesh.add(wall);
     }
     createRoof() {
-        var houseGeometry = new THREE.BoxGeometry(this.houseScale * 7, this.houseScale * 5, this.houseScale / 10);
-        var texture = new THREE.TextureLoader().load("assets/img/roof1.jpg");
+        var houseGeometry = new THREE.BoxGeometry(this.size * 7, this.size * 5, this.size / 10);
+        var texture = new THREE.TextureLoader().load(imgDir + "houseaf/roof1.jpg", function (texture) {
+            texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.x = 2.5;
+            texture.repeat.y = 2.5;
+        });
         texture.wrapS = THREE.RepeatWrapping;
         texture.wrapT = THREE.RepeatWrapping;
         texture.repeat.set(4, 4);
@@ -171,17 +152,17 @@ class HouseAf {
         var roofElement1 = new THREE.Mesh(houseGeometry, houseMaterial);
         var roofElement2 = new THREE.Mesh(houseGeometry, houseMaterial);
         roofElement1.rotation.x = Math.PI / 1.4;
-        roofElement1.position.z = this.z - this.houseScale * 1.5;
-        roofElement1.position.y = this.y + this.houseScale * 3.7;
-        roofElement1.position.x = this.x + this.houseScale * 2;
+        roofElement1.position.z = this.z - (this.size * 1.5);
+        roofElement1.position.y = this.y + (this.size * 3.7);
+        roofElement1.position.x = this.x + (this.size * 2);
 
         roofElement2.rotation.x = -Math.PI / 1.4;
-        roofElement2.position.z = this.z - this.houseScale * 5.5;
-        roofElement2.position.y = this.y + this.houseScale * 3.7;
-        roofElement2.position.x = this.x + this.houseScale * 2;
+        roofElement2.position.z = this.z - (this.size * 5.5);
+        roofElement2.position.y = this.y + (this.size * 3.7);
+        roofElement2.position.x = this.x + (this.size * 2);
 
-        this.meshArray.push(roofElement1);
-        this.meshArray.push(roofElement2);
+        this.mesh.add(roofElement1);
+        this.mesh.add(roofElement2);
     }
 
     render() {
@@ -190,8 +171,7 @@ class HouseAf {
         this.createLeftWall();
         this.createRightWall();
         this.createRoof();
-        for (var i = 0; i < this.meshArray.length; i++) {
-            scene.add(this.meshArray[i]);
-        }
+        this.mesh.position.set(this.x, this.y + 24, this.z + 25);
+        scene.add(this.mesh);
     }
 }

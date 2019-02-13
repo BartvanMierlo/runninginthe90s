@@ -24,20 +24,23 @@ plane.render();
 var prHouse = new PrHouse(-10, 0, 0, 25);
 prHouse.render();
 
-//add treeline
+// Add treeline
 for (i = 0; i < 10; i++) {
-	var tree = new Tree(30, -10, 20 + i * 20);
+	var tree = new Tree(50, 0, 20 + i * 20);
+	tree.render();
 }
-tree.render();
 
 // Add car
-var car = new Car(100, 100);
+var car = new Car();
 car.render();
 
-//add house 1
-var house = new HouseAf(-10, -10, -10);
-house.render();
+// Add van
+var van = new Van();
+van.render();
 
+// Add house 1
+var house = new HouseAf(50, 0, 0);
+house.render();
 
 camera.position.x = 2;
 camera.position.y = 1;
@@ -46,8 +49,8 @@ camera.position.z = 5;
 renderer.render(scene, camera);
 
 
-//Skybox
-//Load skybox images
+// Skybox
+// Load skybox images
 var directions = [imgDir + "posx.tga", imgDir + "negx.tga", imgDir + "posy.tga", imgDir + "negy.tga", imgDir + "posz.tga", imgDir + "negz.tga"];
 var materialArray = [];
 var tLoader = new THREE.TGALoader();
@@ -62,19 +65,21 @@ for (var i = 0; i < 6; i++) {
 	);
 }
 
-//create skybox
+// create skybox
 var skyGeometry = new THREE.CubeGeometry(5000, 5000, 5000);
 var skyMaterial = new THREE.MeshFaceMaterial(materialArray);
 var skyBox = new THREE.Mesh(skyGeometry, skyMaterial);
 scene.add(skyBox);
 
-//Lighting
+// Lighting
 var ambient = new THREE.AmbientLight(0x404040);
 scene.add(ambient);
 var light = new THREE.DirectionalLight(0xffffff, 1.5);
 light.position.set(2000, 2000, 2000);
 scene.add(light);
 
+
+// OrbitControls
 controls = new THREE.OrbitControls(camera);
 controls.autoRotate = false;
 controls.autoRotateSpeed = 2;
@@ -89,6 +94,7 @@ var render = function () {
 	requestAnimationFrame(render);
 	controls.update();
 	car.update();
+	van.update();
 
 	renderer.render(scene, camera);
 };
