@@ -24,24 +24,23 @@ plane.render();
 var prHouse = new PrHouse(-10, 0, 0, 25);
 prHouse.render();
 
-//add treeline
+// Add treeline
 for (i = 0; i < 10; i++) {
 	var tree = new Tree(50, 0, 20 + i * 20);
 	tree.render();
 }
 
-
-
-
+// Add car
 var car = new Car();
 car.render();
+
+// Add van
 var van = new Van();
 van.render();
 
-//add house 1
+// Add house 1
 var house = new HouseAf(50, 0, 0);
 house.render();
-
 
 camera.position.x = 2;
 camera.position.y = 1;
@@ -91,14 +90,12 @@ controls.keys = {
 	BOTTOM: 40 // down arrow
 }
 
-var clock = new THREE.Clock();
-var counter = 2100;
 var render = function () {
 	requestAnimationFrame(render);
 	controls.update();
-
 	car.update();
 	van.update();
+
 	renderer.render(scene, camera);
 };
 render();

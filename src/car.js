@@ -2,10 +2,9 @@ var carMesh;
 
 class Car {
     constructor() {
-    
+
         this.speed = 50;
         this.turnSpeed = 0.1;
-        this.velocity = 0;
     }
 
     render() {
@@ -19,8 +18,8 @@ class Car {
 
     calcVelocity() {
         let angle = carMesh.rotation.z + Math.PI;
-        carMesh.position.x = Math.sin(angle) * this.speed-150;
-        carMesh.position.z = Math.cos(angle) * this.speed-100;
+        carMesh.position.x = Math.sin(angle) * this.speed - 150;
+        carMesh.position.z = Math.cos(angle) * this.speed - 100;
     }
 
     update() {

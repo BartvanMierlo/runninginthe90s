@@ -17,6 +17,7 @@ class PrHouse {
     buildNorthWalls() {
         // North
         const wTexN1 = new THREE.TextureLoader().load(imgDir + 'prHouse/wall.jpg', function (texture) {
+            // Making the texture repeat on the mesh
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.x = 1;
             texture.repeat.y = 1;
@@ -25,6 +26,7 @@ class PrHouse {
         const wGeomN1 = new THREE.BoxGeometry(this.size, this.size, this.size / 50);
         const wGeomN2 = new THREE.BoxGeometry(this.size * 2.5, this.size, this.size / 50);
         const wTexN2 = new THREE.TextureLoader().load(imgDir + 'prHouse/wall.jpg', function (texture) {
+            // Making the texture repeat on the mesh
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.x = 2.5;
             texture.repeat.y = 1;
@@ -47,6 +49,7 @@ class PrHouse {
     buildEastWalls() {
         // East
         const wTexE1 = new THREE.TextureLoader().load(imgDir + 'prHouse/wall.jpg', function (texture) {
+            // Making the texture repeat on the mesh
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.x = 2.5;
             texture.repeat.y = 1;
@@ -65,6 +68,7 @@ class PrHouse {
     buildSouthWalls() {
         // South
         const wTexS1 = new THREE.TextureLoader().load(imgDir + 'prHouse/wall.jpg', function (texture) {
+            // Making the texture repeat on the mesh
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.x = 2.5;
             texture.repeat.y = 1;
@@ -83,6 +87,7 @@ class PrHouse {
     buildWestWalls() {
         // West
         const wTexW1 = new THREE.TextureLoader().load(imgDir + 'prHouse/wall.jpg', function (texture) {
+            // Making the texture repeat on the mesh
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.x = 2.5;
             texture.repeat.y = 1;
@@ -99,7 +104,9 @@ class PrHouse {
     }
 
     buildFloor() {
+        // Floor
         const fTex = new THREE.TextureLoader().load(imgDir + 'prHouse/floor.jpg', function (texture) {
+            // Making the texture repeat on the mesh
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.x = 2.5;
             texture.repeat.y = 2.5;
@@ -115,6 +122,7 @@ class PrHouse {
     buildRoof() {
         // Ceiling
         const cTex = new THREE.TextureLoader().load(imgDir + 'prHouse/ceiling.png', function (texture) {
+            // Making the texture repeat on the mesh
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.x = 2.5;
             texture.repeat.y = 2.5;
@@ -129,6 +137,7 @@ class PrHouse {
 
         // Roof
         const rTex = new THREE.TextureLoader().load(imgDir + 'prHouse/roof.jpg', function (texture) {
+            // Making the texture repeat on the mesh
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.x = 4;
             texture.repeat.y = 2;
@@ -143,9 +152,10 @@ class PrHouse {
         rMesh.position.set(0, this.size * 3, 0);
         this.mesh.add(rMesh);
     }
-    
+
     buildDoor() {
-        const dMat = new THREE.MeshStandardMaterial({color: '#f6feff', roughness: 0, metalness: 0.5, opacity: 0.5, transparent: true});
+        // Door
+        const dMat = new THREE.MeshStandardMaterial({ color: '#f6feff', roughness: 0, metalness: 0.5, opacity: 0.5, transparent: true });
         const dGeom = new THREE.BoxGeometry(this.size * 0.5, this.size, this.size / 50);
         var dMesh = new THREE.Mesh(dGeom, dMat);
         dMesh.position.set(this.x, this.y + this.size * 0.5, this.z + this.size * 1.25);
