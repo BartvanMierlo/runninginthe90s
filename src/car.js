@@ -24,8 +24,6 @@ class Car {
     update() {
         if (carMesh) {
             this.calcVelocity();
-            cube.position.x = carMesh.position.x;
-            cube.position.z = carMesh.position.z;
 
             // carMesh.position.z = this.angle;
             carMesh.rotateZ(-this.turnSpeed * 0.5);
