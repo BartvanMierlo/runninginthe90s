@@ -4,7 +4,6 @@ class Car {
     constructor(x, y) {
         this.speed = 50;
         this.turnSpeed = 0.1;
-        this.velocity = 0;
     }
 
     render() {
@@ -25,7 +24,6 @@ class Car {
         if (carMesh) {
             this.calcVelocity();
 
-            // carMesh.position.z = this.angle;
             carMesh.rotateZ(-this.turnSpeed * 0.5);
         }
     }

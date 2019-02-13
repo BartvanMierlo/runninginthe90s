@@ -30,6 +30,7 @@ for (i = 0; i < 10; i++) {
 }
 tree.render();
 
+// Add car
 var car = new Car(100, 100);
 car.render();
 
@@ -84,13 +85,11 @@ controls.keys = {
 	BOTTOM: 40 // down arrow
 }
 
-var clock = new THREE.Clock();
-var counter = 2100;
 var render = function () {
 	requestAnimationFrame(render);
 	controls.update();
-
 	car.update();
+
 	renderer.render(scene, camera);
 };
 render();
