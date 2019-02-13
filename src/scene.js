@@ -25,6 +25,8 @@ tree.render();
 
 var car = new Car(100, 100);
 car.render();
+var van = new Van(100, 100);
+van.render();
 
 //add house 1
 var house = new HouseAf(-10,-10,-10);
