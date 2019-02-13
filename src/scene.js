@@ -17,7 +17,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Add prHouse
-var prHouse = new PrHouse(-10, 0, 0);
+var prHouse = new PrHouse(-10, 0, 0, 25);
 prHouse.render();
 
 //add treeline
