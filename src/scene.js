@@ -16,15 +16,20 @@ var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+// Add plane
+var plane = new Plane();
+plane.render();
+
 // Add prHouse
 var prHouse = new PrHouse(-10, 0, 0, 25);
 prHouse.render();
 
 //add treeline
-for(i=0;i<10;i++){
-var tree = new Tree(30 ,-10,20+ i*20);
-tree.render();
+for (i = 0; i < 10; i++) {
+	var tree = new Tree(30, -10, 20 + i * 20);
 }
+tree.render();
+
 
 
 var car = new Car(100, 100);
@@ -33,7 +38,7 @@ var van = new Van(100, 100);
 van.render();
 
 //add house 1
-var house = new HouseAf(-10,-10,-10);
+var house = new HouseAf(-10, -10, -10);
 house.render();
 
 
@@ -70,7 +75,7 @@ scene.add(skyBox);
 var ambient = new THREE.AmbientLight(0x404040);
 scene.add(ambient);
 var light = new THREE.DirectionalLight(0xffffff, 1.5);
-light.position.set(0, 0, 1);
+light.position.set(2000, 2000, 2000);
 scene.add(light);
 
 controls = new THREE.OrbitControls(camera);
