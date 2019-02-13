@@ -1,7 +1,7 @@
 class Tree {
     constructor(x,y,z){
         this.x = x;
-        this.y = y;
+        this.y = y+22;
         this.z = z;
         this.meshArray = [];
     }

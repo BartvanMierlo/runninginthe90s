@@ -1,7 +1,8 @@
 var carMesh;
 
 class Car {
-    constructor(x, y) {
+    constructor() {
+    
         this.speed = 50;
         this.turnSpeed = 0.1;
         this.velocity = 0;
@@ -12,20 +13,19 @@ class Car {
         loader.load('assets/models/car/model.dae', function (collada) {
             scene.add(collada.scene);
             carMesh = collada.scene;
+            carMesh.position.x = -100;
         });
     }
 
     calcVelocity() {
         let angle = carMesh.rotation.z + Math.PI;
-        carMesh.position.x = Math.sin(angle) * this.speed;
-        carMesh.position.z = Math.cos(angle) * this.speed;
+        carMesh.position.x = Math.sin(angle) * this.speed-150;
+        carMesh.position.z = Math.cos(angle) * this.speed-100;
     }
 
     update() {
         if (carMesh) {
             this.calcVelocity();
-
-            // carMesh.position.z = this.angle;
             carMesh.rotateZ(-this.turnSpeed * 0.5);
         }
     }

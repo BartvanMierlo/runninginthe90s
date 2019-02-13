@@ -17,21 +17,8 @@ class HouseAf {
         } );
  
 
-        //triangle 
+        
         var houseMaterial = new THREE.MeshPhongMaterial({map: texture, shininess: 10});
-        var triangleBit = new THREE.Shape();
-        triangleBit.moveTo(this.x-(this.size/2), this.y, this.z);
-        triangleBit.lineTo(this.x+(this.size*3), this.y+(this.size*2.7), this.z);
-        triangleBit.lineTo(this.x+(this.size*6.5), this.y, this.z);
-        triangleBit.lineTo(this.x-(this.size/2), this.y, this.z);
-
-        var geometry = new THREE.ShapeGeometry( triangleBit );
-        var meshT = new THREE.Mesh( geometry, houseMaterial ) ;
-        meshT.rotation.y = -Math.PI/2;
-        meshT.position.y = this.y+(this.size*3.5);
-        meshT.position.x = this.x-(this.size*1.5);
-        meshT.position.z = this.z-(this.size*5.5);
-        this.mesh.add(meshT);
 
         var wall = new THREE.Mesh(houseGeometry, houseMaterial);
         var wall2 = new THREE.Mesh(houseGeometry, houseMaterial);
@@ -74,21 +61,6 @@ class HouseAf {
         } );
 
         var houseMaterial = new THREE.MeshPhongMaterial({map: texture, shininess: 10});
-
-        var triangleBit = new THREE.Shape();
-        triangleBit.moveTo(this.x-(this.size/2), this.y, this.z);
-        triangleBit.lineTo(this.x+(this.size*3), this.y+(this.size*2.7), this.z);
-        triangleBit.lineTo(this.x+(this.size*6.5), this.y, this.z);
-        triangleBit.lineTo(this.x-(this.size/2), this.y, this.z);
-
-        var geometry = new THREE.ShapeGeometry( triangleBit );
-        var meshT = new THREE.Mesh( geometry, houseMaterial ) ;
-        meshT.rotation.y = Math.PI/2;
-        meshT.position.y = this.y+(this.size*3.5);
-        meshT.position.x = this.x+(this.size*5.5);
-        meshT.position.z = this.z-(this.size*1.5);
-        this.mesh.add(meshT);
-
 
         var wall = new THREE.Mesh(houseGeometry, houseMaterial);
         var wall2 = new THREE.Mesh(houseGeometry, houseMaterial);
@@ -199,7 +171,7 @@ class HouseAf {
         this.createLeftWall();
         this.createRightWall();
         this.createRoof();
-        this.mesh.position.set(this.x, this.y, this.z);
+        this.mesh.position.set(this.x, this.y+24, this.z+25);
         scene.add(this.mesh);
     }
 }
